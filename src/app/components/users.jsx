@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
-import User from "./user";
-import Pagination from "./pagination";
-import {paginate} from "../utils/paginate";
+import React, { useState } from 'react'
+import User from './user'
+import Pagination from './pagination'
+import { paginate } from '../utils/paginate'
+import PropTypes from 'prop-types'
 
 const Users = ({ users, ...rest }) => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -9,7 +10,7 @@ const Users = ({ users, ...rest }) => {
     const count = users.length
     const pageSize = 4
 
-    const handlePageChange = pageIndex => {
+    const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
     }
 
@@ -31,7 +32,7 @@ const Users = ({ users, ...rest }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {userCrop.map(user => (
+                        {userCrop.map((user) => (
                             <User key={user._id} {...rest} {...user} />
                         ))}
                     </tbody>
@@ -45,6 +46,9 @@ const Users = ({ users, ...rest }) => {
             />
         </>
     )
+}
+Users.propTypes = {
+    users: PropTypes.array
 }
 
 export default Users

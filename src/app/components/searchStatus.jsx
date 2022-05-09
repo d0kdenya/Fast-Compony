@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const SearchStatus = ({ length }) => {
-    const renderPhrase = number => {
+    const renderPhrase = (number) => {
         const lastOne = Number(number.toString().slice(-1))
 
         if (number > 4 && number < 15) return 'человек тусанёт'
@@ -15,15 +16,16 @@ const SearchStatus = ({ length }) => {
 
     return (
         <h2>
-            <span
-                className={"badge bg-" + (length > 0 ? "primary" : "danger")}
-            >
+            <span className={'badge bg-' + (length > 0 ? 'primary' : 'danger')}>
                 {length > 0
                     ? `${length} ${renderPhrase(length)} с тобой сегодня`
-                    : "Никто с тобой не тусанёт"}
+                    : 'Никто с тобой не тусанёт'}
             </span>
         </h2>
-    );
-};
+    )
+}
+SearchStatus.propTypes = {
+    length: PropTypes.number
+}
 
-export default SearchStatus;
+export default SearchStatus
